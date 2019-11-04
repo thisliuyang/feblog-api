@@ -57,8 +57,8 @@ if (env === 'development') { // logger
   })
 }
 
-app.listen(SystemConfig.API_server_port)
-
-console.log('Now start API server on port ' + SystemConfig.API_server_port + '...')
+app.listen(SystemConfig.API_server_port, () => {
+  console.log('Now start API server on port ' + SystemConfig.API_server_port + '...')
+})
 
 export default app
