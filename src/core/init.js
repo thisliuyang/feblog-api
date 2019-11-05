@@ -1,5 +1,5 @@
-const Router = require('koa-router')
-const requireDirectory = require('require-directory')
+import Router from 'koa-router'
+import requireDirectory from 'require-directory'
 
 class InitManager {
   static initCore (app) {

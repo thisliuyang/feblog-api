@@ -1,5 +1,5 @@
-const { Admin } = require('../models/admin')
-const bcrypt = require('bcryptjs')
+import { Admin } from '../models/admin'
+import bcrypt from 'bcryptjs'
 
 // data access object
 class AdminDao {
@@ -64,7 +64,6 @@ class AdminDao {
     return admin
   }
 }
-
-module.exports = {
+export {
   AdminDao
 }

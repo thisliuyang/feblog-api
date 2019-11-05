@@ -19,7 +19,7 @@ const sequelize = new Sequelize(DBConfig.database, DBConfig.username, DBConfig.p
 // sequelize.sync({
 //   force: false
 // })
-// export default sequelize
-module.exports = {
+
+export {
   sequelize
 }

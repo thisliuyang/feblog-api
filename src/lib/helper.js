@@ -16,7 +16,6 @@ class Resolve {
     }
   }
 }
-
-module.exports = {
+export {
   Resolve
 }

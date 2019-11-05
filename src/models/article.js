@@ -1,6 +1,7 @@
-const moment = require('moment')
-const { sequelize } = require('../../core/db')
-const { Sequelize, Model } = require('sequelize')
+
+import sequelize from '../core/db'
+import moment from 'moment'
+import { Sequelize, Model } from 'sequelize'
 
 // 定义文章模型
 class Article extends Model {

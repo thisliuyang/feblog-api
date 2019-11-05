@@ -1,6 +1,5 @@
 import { DB as DBConfig } from '../config'
-const Sequelize = require('sequelize')
-
+import Sequelize from 'sequelize'
 const {
   database,
   host,
@@ -8,7 +7,7 @@ const {
   user,
   password
 } = DBConfig
-console.log(host)
+
 const sequelize = new Sequelize(database, user, password, {
   dialect: 'mysql',
   host,
@@ -45,8 +44,4 @@ sequelize.sync({
   force: false
 })
 
-module.exports = {
-  sequelize
-}
-
-// 数据迁移 SQL 更新
+export default sequelize

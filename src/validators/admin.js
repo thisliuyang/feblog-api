@@ -1,9 +1,5 @@
-const {
-  Rule,
-  LinValidator
-} = require('../core/lin-validator-v2')
-
-const { Admin } = require('../models/admin')
+import { Rule, LinValidator } from '../core/lin-validator-v2'
+import { Admin } from '../models/admin'
 // const { LoginType } = require('../lib/enum')
 
 class RegisterValidator extends LinValidator {
@@ -83,8 +79,7 @@ class TokenNotEmptyValidator extends LinValidator {
     ]
   }
 }
-
-module.exports = {
+export {
   RegisterValidator,
   AdminLoginValidator,
   TokenNotEmptyValidator

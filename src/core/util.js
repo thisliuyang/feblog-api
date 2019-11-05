@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+import jwt from 'jsonwebtoken'
 /***
  *
  */
@@ -10,6 +10,7 @@ const findMembers = function (instance, {
   // 递归函数
   function _find (instance) {
     // 基线条件（跳出递归）
+    // eslint-disable-next-line no-proto
     if (instance.__proto__ === null) { return [] }
 
     let names = Reflect.ownKeys(instance)
@@ -18,6 +19,7 @@ const findMembers = function (instance, {
       return _shouldKeep(name)
     })
 
+    // eslint-disable-next-line no-proto
     return [...names, ..._find(instance.__proto__)]
   }
 
@@ -51,7 +53,7 @@ const generateToken = function (uid, scope) {
   return token
 }
 
-module.exports = {
+export {
   findMembers,
   generateToken
 }

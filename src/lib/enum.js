@@ -15,6 +15,6 @@ const LoginType = {
   isThisType
 }
 
-module.exports = {
+export {
   LoginType
 }
