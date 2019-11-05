@@ -6,6 +6,8 @@ import {
 } from './config'
 import path from 'path'
 import MainRoutes from './routes/main-routes'
+import router from './routes/v1/admin'
+
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
 import ErrorRoutes from './routes/error-routes'
 import jwt from 'koa-jwt'
@@ -44,6 +46,7 @@ app
   })) // Processing request
   // .use(PluginLoader(SystemConfig.System_plugin_path))
   .use(MainRoutes.routes())
+  .use(router.routes())
   .use(MainRoutes.allowedMethods())
   .use(ErrorRoutes())
 

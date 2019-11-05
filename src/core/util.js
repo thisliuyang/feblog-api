@@ -40,8 +40,8 @@ const findMembers = function (instance, {
 
 // 颁布令牌
 const generateToken = function (uid, scope) {
-  const secretKey = global.config.security.secretKey
-  const expiresIn = global.config.security.expiresIn
+  const secretKey = 'secretKey'
+  const expiresIn = 60 * 60
   const token = jwt.sign({
     uid,
     scope
