@@ -30,3 +30,14 @@ export const login = async (ctx, next) => {
     token
   }
 }
+export const getUserInfo = async (ctx, next) => {
+  // 获取用户ID
+  const id = ctx.auth.uid
+
+  // 查询用户信息
+  const userInfo = await AdminDao.getAdminInfo(id)
+
+  // 返回结果
+  ctx.response.status = 200
+  ctx.body = res.json(userInfo)
+}

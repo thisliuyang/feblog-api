@@ -7,24 +7,21 @@ class InitManager {
     InitManager.app = app
     InitManager.initLoadRouters()
     InitManager.loadHttpException()
-    InitManager.loadConfig()
+    // InitManager.loadConfig()
   }
 
   // 加载全部路由
   static initLoadRouters () {
     // 绝对路径
-    const apiDirectory = `${process.cwd()}/app/api`
+    const apiDirectory = `${process.cwd()}/src/routes/v1`
     // 路由自动加载
     requireDirectory(module, apiDirectory, {
-      visit: whenLoadModule
-    })
-
-    // 判断 requireDirectory 加载的模块是否为路由
-    function whenLoadModule (obj) {
-      if (obj instanceof Router) {
-        InitManager.app.use(obj.routes())
+      visit: route => {
+        if (route instanceof Router) {
+          InitManager.app.use(route.routes())
+        }
       }
-    }
+    })
   }
 
   static loadConfig (path = '') {
@@ -39,4 +36,4 @@ class InitManager {
   }
 }
 
-module.exports = InitManager
+export default InitManager

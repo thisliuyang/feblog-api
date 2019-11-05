@@ -1,4 +1,4 @@
-const { HttpException } = require('../core/http-exception')
+import { HttpException } from '../core/http-exception'
 
 const catchError = async (ctx, next) => {
   try {
@@ -6,7 +6,7 @@ const catchError = async (ctx, next) => {
   } catch (error) {
     // 开发环境
     const isHttpException = error instanceof HttpException
-    const isDev = global.config.environment === 'dev'
+    const isDev = true
 
     if (isDev && !isHttpException) {
       throw error

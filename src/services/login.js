@@ -1,6 +1,6 @@
-const { AdminDao } = require('../dao/admin')
-const { generateToken } = require('../core/util')
-const { Auth } = require('../middleware/auth')
+import { AdminDao } from '../dao/admin'
+import { generateToken } from '../core/util'
+import { Auth } from '../middleware/auth'
 
 class LoginManager {
   // 管理员登录
@@ -10,7 +10,6 @@ class LoginManager {
     return generateToken(admin.id, Auth.ADMIN)
   }
 }
-
-module.exports = {
+export {
   LoginManager
 }

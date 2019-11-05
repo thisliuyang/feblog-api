@@ -52,7 +52,7 @@ class Existing extends HttpException {
   }
 }
 
-module.exports = {
+export {
   HttpException,
   ParameterException,
   AuthFailed,

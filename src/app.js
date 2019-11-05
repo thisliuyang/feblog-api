@@ -6,15 +6,18 @@ import {
 } from './config'
 import path from 'path'
 import MainRoutes from './routes/main-routes'
-import router from './routes/v1/admin'
-
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
 import ErrorRoutes from './routes/error-routes'
 import jwt from 'koa-jwt'
 import fs from 'fs'
+import InitManager from './core/init'
+const catchError = require('./middleware/exception')
+
 // import PluginLoader from './lib/PluginLoader'
 
 const app = new Koa2()
+app.use(catchError)
+
 const env = process.env.NODE_ENV || 'development' // Current mode
 
 const publicKey = fs.readFileSync(path.join(__dirname, '../publicKey.pub'))
@@ -46,9 +49,10 @@ app
   })) // Processing request
   // .use(PluginLoader(SystemConfig.System_plugin_path))
   .use(MainRoutes.routes())
-  .use(router.routes())
   .use(MainRoutes.allowedMethods())
   .use(ErrorRoutes())
+
+InitManager.initCore(app)
 
 if (env === 'development') { // logger
   app.use((ctx, next) => {
