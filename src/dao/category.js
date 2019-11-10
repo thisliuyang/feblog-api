@@ -1,7 +1,7 @@
-const { Category } = require('../models/category')
-const { Article } = require('../models/article')
-const { ArticleDao } = require('../dao/article')
-const { Sequelize, Op } = require('sequelize')
+import { Sequelize, Op } from 'sequelize'
+import { Category } from '../models/category'
+import { Article } from '../models/article'
+import { ArticleDao } from '../dao/article'
 
 class CategoryDao {
   // 创建分类
@@ -170,6 +170,4 @@ class CategoryDao {
   }
 }
 
-module.exports = {
-  CategoryDao
-}
+export { CategoryDao }

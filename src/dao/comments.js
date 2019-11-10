@@ -1,5 +1,5 @@
-const { Comments } = require('../models/comments')
-const { Article } = require('../models/article')
+import { Comments } from '../models/comments'
+import { Article } from '../models/article'
 
 class CommentsDao {
   // 创建评论
@@ -123,6 +123,4 @@ class CommentsDao {
   }
 }
 
-module.exports = {
-  CommentsDao
-}
+export { CommentsDao }

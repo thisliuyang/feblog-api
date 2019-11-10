@@ -64,6 +64,4 @@ class AdminDao {
     return admin
   }
 }
-export {
-  AdminDao
-}
+export { AdminDao }

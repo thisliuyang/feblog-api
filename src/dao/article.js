@@ -1,8 +1,7 @@
-const { Sequelize, Op } = require('sequelize')
-
-const { Article } = require('../models/article')
-const { Category } = require('../models/category')
-const { Comments } = require('../models/comments')
+import { Sequelize, Op } from 'sequelize'
+import { Article } from '../models/article'
+import { Category } from '../models/category'
+import { Comments } from '../models/comments'
 
 // 定义文章模型
 class ArticleDao {
@@ -267,6 +266,4 @@ class ArticleDao {
   }
 }
 
-module.exports = {
-  ArticleDao
-}
+export { ArticleDao }

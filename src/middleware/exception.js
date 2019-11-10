@@ -31,4 +31,4 @@ const catchError = async (ctx, next) => {
   }
 }
 
-module.exports = catchError
+export default catchError

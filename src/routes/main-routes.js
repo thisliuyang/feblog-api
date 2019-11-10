@@ -10,3 +10,9 @@ export default router
   .put('/api/:name', controllers.api.Put)
   .del('/api/:name', controllers.api.Delete)
   .post('/auth/:action', controllers.auth.Post)
+  .get('/test', (ctx, next) => {
+    console.log(ctx.state.user, ctx.state.jwtdata)
+    ctx.body = {
+      code: 99
+    }
+  })

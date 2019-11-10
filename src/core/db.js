@@ -1,4 +1,4 @@
-import { DB as DBConfig } from '../config'
+import { DB } from '../config'
 import Sequelize from 'sequelize'
 const {
   database,
@@ -6,7 +6,7 @@ const {
   port,
   user,
   password
-} = DBConfig
+} = DB
 
 const sequelize = new Sequelize(database, user, password, {
   dialect: 'mysql',

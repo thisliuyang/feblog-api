@@ -14,6 +14,7 @@
     "link:fix": "eslint --fix ."
   },
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "basic-auth": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.5.1",

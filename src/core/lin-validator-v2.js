@@ -1,22 +1,16 @@
-/**
- * Lin-Validator v2
- * 作者：7七月
- * 微信公众号：林间有风
- */
-
-const validator = require('validator')
-const {
+import {
   ParameterException
-} = require('./http-exception')
-const {
+} from './http-exception'
+import {
   get,
   last,
   set,
   cloneDeep
-} = require('lodash')
-const {
+} from 'lodash'
+import validator from 'validator'
+import {
   findMembers
-} = require('./util')
+} from './util'
 
 class LinValidator {
   constructor () {
@@ -111,7 +105,7 @@ class LinValidator {
 
       if (result.pass) {
         // 如果参数路径不存在，往往是因为用户传了空值，而又设置了默认值
-        if (param.path.length == 0) {
+        if (param.path.length === 0) {
           set(this.parsed, ['default', key], result.legalValue)
         } else {
           set(this.parsed, param.path, result.legalValue)
@@ -266,7 +260,7 @@ class RuleField {
   }
 }
 
-module.exports = {
+export {
   Rule,
   LinValidator
 }

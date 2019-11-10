@@ -1,7 +1,7 @@
-const moment = require('moment')
+import moment from 'moment'
 
-const { Sequelize, Model } = require('sequelize')
-const { sequelize } = require('../../core/db')
+import { Sequelize, Model } from 'sequelize'
+import sequelize from '../core/db'
 
 class Comments extends Model {
 
@@ -37,6 +37,4 @@ Comments.init({
   tableName: 'comments'
 })
 
-module.exports = {
-  Comments
-}
+export { Comments }

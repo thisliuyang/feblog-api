@@ -1,14 +1,18 @@
 import KoaRouter from 'koa-router'
 import controllers from '../../controllers'
-import { Auth } from '../../middleware/auth'
+
 const router = new KoaRouter({
-  prefix: '/public/api/v1/admin'
+  prefix: '/api/v1'
 })
-const AUTH_ADMIN = 16
 
 router
-  .post('/register', controllers.admin.register)
-  .post('/login', controllers.admin.login)
-  .post('/auth', new Auth(AUTH_ADMIN).m, controllers.admin.getUserInfo)
+  .post('/user/register', controllers.admin.register)
+  .post('/user/login', controllers.admin.login)
+  .post('/auth', controllers.admin.getUserInfo)
+  .get('/user/test', (ctx, next) => {
+    ctx.body = {
+      code: 9
+    }
+  })
 
 module.exports = router

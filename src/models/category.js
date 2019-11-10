@@ -1,7 +1,7 @@
-const moment = require('moment')
+import moment from 'moment'
 
-const { sequelize } = require('../../core/db')
-const { Sequelize, Model } = require('sequelize')
+import sequelize from '../core/db'
+import { Sequelize, Model } from 'sequelize'
 
 // 定义文章模型
 class Category extends Model {
@@ -35,6 +35,4 @@ Category.init({
   tableName: 'category'
 })
 
-module.exports = {
-  Category
-}
+export { Category }

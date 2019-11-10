@@ -1,9 +1,6 @@
-const {
-  Rule,
-  LinValidator
-} = require('../../core/lin-validator-v2')
 
-const { Category } = require('../models/category')
+import { Rule, LinValidator } from '../core/lin-validator-v2'
+import { Category } from '../models/category'
 
 class ArticleValidator extends LinValidator {
   constructor () {
@@ -49,7 +46,7 @@ class ArticleSearchValidator extends LinValidator {
   }
 }
 
-module.exports = {
+export {
   ArticleValidator,
   PositiveIdParamsValidator,
   ArticleSearchValidator

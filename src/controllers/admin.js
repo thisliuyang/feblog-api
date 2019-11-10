@@ -30,9 +30,11 @@ export const login = async (ctx, next) => {
     token
   }
 }
+
 export const getUserInfo = async (ctx, next) => {
   // 获取用户ID
-  const id = ctx.auth.uid
+  console.log(ctx.state)
+  const id = ctx.state.user.uid
 
   // 查询用户信息
   const userInfo = await AdminDao.getAdminInfo(id)

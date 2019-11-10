@@ -1,9 +1,10 @@
-module.exports = function () {
+export default function () {
   return function (ctx, next) {
     return next().catch((err) => {
       switch (err.status) {
         case 401:
           ctx.status = 200
+          console.log(ctx)
           ctx.body = {
             status: 401,
             result: {

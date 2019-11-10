@@ -41,6 +41,4 @@ Article.init({
   tableName: 'article'
 })
 
-module.exports = {
-  Article
-}
+export { Article }
