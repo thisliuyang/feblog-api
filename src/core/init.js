@@ -13,7 +13,7 @@ class InitManager {
   // 加载全部路由
   static initLoadRouters () {
     // 绝对路径
-    const apiDirectory = `${process.cwd()}/src/routes/v1`
+    const apiDirectory = `${process.cwd()}/dist/routes/v1`
     // 路由自动加载
     requireDirectory(module, apiDirectory, {
       visit: route => {
