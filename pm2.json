@@ -1,0 +1,19 @@
+{
+  "apps" : [{
+    "name"        : "feblog-api",
+    "script"      : "./dist/app.js",
+    "args"        : "",
+    "cwd"         : "./",
+    "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+    "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules", "logs"],
+    "watch"       : true,
+    "node_args"   : "--harmony",
+    "out_file"    : "./logs/out.log",
+    "error_file"  : "./logs/error.log", 
+    "exec_mode"   : "cluster_mode",
+    "env": {
+        "NODE_ENV": "production",
+        "AWESOME_SERVICE_API_TOKEN": "xxx"
+    }
+  }]
+}
