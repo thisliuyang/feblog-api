@@ -22,7 +22,7 @@ class InitManager {
 
   static initLoadRouters() {
     // 绝对路径
-    const apiDirectory = `${process.cwd()}/src/routes/v1`; // 路由自动加载
+    const apiDirectory = process.env.NODE_ENV === 'development' ? `${process.cwd()}/src/routes/v1` : `${process.cwd()}/dist/routes/v1`; // 路由自动加载
 
     (0, _requireDirectory.default)(module, apiDirectory, {
       visit: route => {
