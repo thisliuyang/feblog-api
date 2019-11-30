@@ -9,9 +9,10 @@ router
   .post('/user/register', controllers.admin.register)
   .post('/user/login', controllers.admin.login)
   .post('/auth', controllers.admin.getUserInfo)
+  .get('/user/qiniutoken', controllers.admin.getQiniuToken)
   .get('/user/test', (ctx, next) => {
     ctx.body = {
-      code: 9
+      code: 'test'
     }
   })
 

@@ -3,9 +3,10 @@ import { RegisterValidator, AdminLoginValidator } from '../validators/admin'
 import { AdminDao } from '../dao/admin'
 import { Resolve } from '../lib/helper'
 import { LoginManager } from '../services/login'
-
+import qiniu from 'qiniu'
 const res = new Resolve()
-
+const ACCESS_KEY = 'DVfjdoiPiZNxFYVmuGe3Yt9kf6RLb-j5XgeuvNib'
+const SECRET_KEY = 'wFvpOpoaqcCXOoCU1Je4ikFR-lRBJfa-79gPTDFO'
 export const register = async (ctx, next) => {
   // 通过验证器校验参数是否通过
   const v = await new RegisterValidator().validate(ctx)
@@ -42,4 +43,16 @@ export const getUserInfo = async (ctx, next) => {
   // 返回结果
   ctx.response.status = 200
   ctx.body = res.json(userInfo)
+}
+
+export const getQiniuToken = (ctx) => {
+  const mac = new qiniu.auth.digest.Mac(ACCESS_KEY, SECRET_KEY)
+  const options = {
+    scope: 'feblog',
+    expires: 72000
+  }
+  const putPolicy = new qiniu.rs.PutPolicy(options)
+  const uploadToken = putPolicy.uploadToken(mac)
+  ctx.response.status = 200
+  ctx.body = res.json(uploadToken)
 }
