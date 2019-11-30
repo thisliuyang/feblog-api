@@ -1,9 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getUserInfo = exports.login = exports.register = void 0;
+exports.getQiniuToken = exports.getUserInfo = exports.login = exports.register = void 0;
 
 var _admin = require("../validators/admin");
 
@@ -13,7 +15,11 @@ var _helper = require("../lib/helper");
 
 var _login = require("../services/login");
 
+var _qiniu = _interopRequireDefault(require("qiniu"));
+
 const res = new _helper.Resolve();
+const ACCESS_KEY = 'DVfjdoiPiZNxFYVmuGe3Yt9kf6RLb-j5XgeuvNib';
+const SECRET_KEY = 'wFvpOpoaqcCXOoCU1Je4ikFR-lRBJfa-79gPTDFO';
 
 const register = async (ctx, next) => {
   // 通过验证器校验参数是否通过
@@ -52,3 +58,17 @@ const getUserInfo = async (ctx, next) => {
 };
 
 exports.getUserInfo = getUserInfo;
+
+const getQiniuToken = ctx => {
+  const mac = new _qiniu.default.auth.digest.Mac(ACCESS_KEY, SECRET_KEY);
+  const options = {
+    scope: 'feblog',
+    expires: 72000
+  };
+  const putPolicy = new _qiniu.default.rs.PutPolicy(options);
+  const uploadToken = putPolicy.uploadToken(mac);
+  ctx.response.status = 200;
+  ctx.body = res.json(uploadToken);
+};
+
+exports.getQiniuToken = getQiniuToken;

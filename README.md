@@ -1,27 +1,21 @@
-# Koa2 RESTful API 服务器脚手架
-
-这是一个基于 Koa2 的轻量级 RESTful API Server 脚手架，支持 ES6。
+# FEBLOG API
 
 **注意：** 因升级 Koa 版本至 2.3.0+，为配合相应的依赖项，故需要 Node.js 版本大于等于 v8.0.0（建议 v11.13.0），NPM 大于等于 v5.0.0。建议使用 yarn 代替 npm。
 
 约定使用 JSON 格式传输数据，POST、PUT、DELET 方法支持的 Content-Type 为`application/x-www-form-urlencoded、multipart/form-data、application/json`可配置支持跨域。非上传文件推荐 application/x-www-form-urlencoded。通常情况下返回 application/json 格式的 JSON 数据。
 
-可选用 redis 等非关系型数据库。考虑 RESTful API Server 的实际开发需要，这里通过 sequelize.js 作为 PostgreSQL, MySQL, MariaDB, SQLite, MSSQL 关系型数据库的 ORM，如无需关系型 ORM，`npm remove sequelize -S`，然后删除`src/lib/sequelize.js`文件。
+通过 sequelize.js 作为 PostgreSQL, MySQL, MariaDB, SQLite, MSSQL 关系型数据库的 ORM
 
-此脚手架只安装了一些和 Koa2 不冲突的搭建 RESTful API Server 的必要插件，附带每一个插件的说明。采用 ESlint 进行语法检查。
+采用 ESlint 进行语法检查。
 
-因此脚手架主要提供 RESTful API，故暂时不考虑前端静态资源处理，只提供静态资源访问的基本方法便于访问用户上传到服务器的图片等资源。基本目录结构与 vue-cli 保持一致，可配合 React、AngularJS、Vue.js 等前端框架使用。在 Cordova/PhoneGap、Electron 中使用时需要开启跨域功能。
 
-**免责声明：** 此脚手架仅为方便开发提供基础环境，任何人或组织均可随意克隆使用，使用引入的框架需遵循原作者规定的相关协议（部分框架列表及来源地址在下方）。项目维护者均不对采用此脚手架产生的任何后果负责。
-
-**基于 Vue 2，Webpack 4，Koa 2 的 SSR 脚手架：**[https://github.com/yi-ge/Vue-SSR-Koa2-Scaffold](https://github.com/yi-ge/Vue-SSR-Koa2-Scaffold)。
-
+**feblog 前端代码：**[https://github.com/thisliuyang/feblog-web](https://github.com/thisliuyang/feblog-web)
 ## 开发使用说明
 
 ```bash
-git clone https://github.com/yi-ge/koa2-API-scaffold.git
+git clone https://github.com/thisliuyang/feblog-api
 
-cd mv koa2-API-scaffold
+cd feblog-api
 npm install
 npm run dev # 可执行npm start跳过ESlint检查。
 ```
@@ -61,7 +55,7 @@ node dist/app.js
 提供了 PM2 部署 RESTful API Server 的示例配置，位于“pm2.js”文件中。
 
 ```bash
-pm2 start pm2.js
+pm2 start pm2.json
 ```
 
 PM2 配合 Docker 部署说明： http://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/
@@ -87,6 +81,7 @@ nohup node ./dist/app.js > logs/out.log &
 
 ```bash
 ps aux|grep app.js
+netstat -anp tcp | grep 80
 ```
 
 查看运行日志
