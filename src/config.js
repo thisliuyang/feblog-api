@@ -18,7 +18,7 @@ export const DB = {
   host: 'localhost', // 服务器地址
   port: 3306, // 数据库端口号
   user: 'root', // 数据库用户名
-  password: 'root123456', // 数据库密码
+  password: process.env.NODE_ENV === 'development' ? 'root123456' : 'root', // 数据库密码
   database: 'feblog' // 数据库名称
   // prefix: 'api_' // 默认"api_"
 }
